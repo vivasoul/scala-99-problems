@@ -4,7 +4,7 @@ Example:
 scala> flatten(List(List(1, 1), 2, List(3, List(5, 8))))
 res0: List[Any] = List(1, 1, 2, 3, 5, 8)
 */
-object P07 extends App{
+object P07 {
 
   def flatten(xs: List[Any]) : List[Any] = {
     var ys:List[Any] = Nil
@@ -27,17 +27,13 @@ object P07 extends App{
     case xs : List[_] =>  flatten3(xs)
     case e => List(e)
   } )
-
-  val a = P07.flatten(List(List(1, 1), 2, List(3, List(5, 8))))
-  println(a)
-
-  val b = P07.flatten2(List(List(1, 1), 2, List(3, List(5, 8))))
-  println(b)
-
-  val c = P07.flatten3(List(List(1, 1), 2, List(3, List(5, 8))))
-  println(c)
-
-  Set(1,2,3)
-
-  Map(1->2).filterKeys
 }
+
+val a = P07.flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+println(a)
+
+val b = P07.flatten2(List(List(1, 1), 2, List(3, List(5, 8))))
+println(b)
+
+val c = P07.flatten3(List(List(1, 1), 2, List(3, List(5, 8))))
+println(c)
