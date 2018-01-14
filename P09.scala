@@ -14,6 +14,14 @@ object P09 {
     }
     packR(xs)
   }
+
+  def pack2[A](xs:List[A]):List[List[A]] = {
+    def packR2[B](ys_tp:(List[B],List[B])):List[List[B]] = ys_tp._2 match {
+      case h :: t => ys_tp._1 :: packR2(ys_tp._2.span(_ == h ))
+      case Nil => List(ys_tp._1)
+    }
+    packR2(xs.span(_ == xs.head))
+  }
 }
 P09.pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
-
+P09.pack2(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
