@@ -7,12 +7,9 @@ scala> pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
 res0: List[List[Symbol]] = List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e))
  */
 object P09 {
-  def pack[A](xs:List[A]):List[List[A]] = {
-    def packR[B](ys:List[B]):List[List[B]] = ys match {
-      case h :: t => ys.takeWhile(_ == h) :: packR(ys.dropWhile(_ == h))
-      case Nil => Nil
-    }
-    packR(xs)
+  def pack[A](xs:List[A]):List[List[A]] = xs match {
+    case h :: t => xs.takeWhile(_ == h) :: pack(xs.dropWhile(_ == h))
+    case Nil => Nil
   }
 
   def pack2[A](xs:List[A]):List[List[A]] = {
